@@ -10,6 +10,7 @@ const ImageminMozjpeg = require('imagemin-mozjpeg');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: {
@@ -95,6 +96,11 @@ module.exports = {
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       openAnalyzer: false,
+    }),
+    new Dotenv({
+      path: path.resolve(__dirname, '.env'),
+      systemvars: true,
+      safe: true,
     }),
   ],
 };
